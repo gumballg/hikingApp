@@ -18,7 +18,6 @@ class LoginForm extends Component {
         this.props.handleLogin(this.state)
     }
     render(){
-        console.log(this.state, 'IN LOGIN FORM')
         return(
             <form onSubmit = {this.handleSubmit}>
                 Username: <input onChange = {this.handleChange} value = {this.state.username} type = "text" name = "username"/>
