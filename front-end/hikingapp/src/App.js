@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LoginForm from './AuthPage/LoginForm/LoginForm'
-import RegistrationForm from './AuthPage/RegistrationForm/RegistrationForm'
+// import LoginForm from './AuthPage/LoginForm/LoginForm'
+// import RegistrationForm from './AuthPage/RegistrationForm/RegistrationForm'
+import AuthPage from './AuthPage/AuthPage'
+import MainContainer from './MainContainer/MainContainer';
 
 class App extends Component {
   constructor(){
@@ -40,7 +42,7 @@ class App extends Component {
       })
       const parsedLoginResponse = await loginResponse.json();
       console.log(parsedLoginResponse);
-      if(parsedLoginResponse === 200){
+      if(parsedLoginResponse.status === 200){
         this.setState({
           loggedIn: true,
           currentUser: parsedLoginResponse.data
@@ -64,7 +66,7 @@ class App extends Component {
     })
     const parsedResponse = await response.json();
     console.log(parsedResponse);
-    if(parsedResponse === 200){
+    if(parsedResponse.status === 200){
       this.setState({
         loggedIn: true,
         currentUser: parsedResponse.data
@@ -74,9 +76,11 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-       <h1>We are on the paggee!!!!!!</h1>
-       <LoginForm handleLogin = {this.handleLogin}/>
-       <RegistrationForm handleRegister = {this.handleRegister}/>
+       {this.state.loggedIn ?
+       <MainContainer/>
+       :
+       <AuthPage handleLogin = {this.handleLogin} handleRegister = {this.handleRegister}/>
+      }
       </div>
     );
   }
