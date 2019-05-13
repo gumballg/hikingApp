@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/buzzed", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hikingapp", {useNewUrlParser: true});
 
 mongoose.connection.on('connected', ()=>{
     console.log("MONGOOSE IS GOOD TO GO")

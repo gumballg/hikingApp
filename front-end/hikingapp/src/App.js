@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import LoginForm from './AuthPage/LoginForm/LoginForm'
-// import RegistrationForm from './AuthPage/RegistrationForm/RegistrationForm'
 import AuthPage from './AuthPage/AuthPage'
 import MainContainer from './MainContainer/MainContainer';
 
@@ -74,6 +72,7 @@ class App extends Component {
     }
   }
   render(){
+    // console.log(this.state.currentUser.username)
     return (
       <div className="App">
        {this.state.loggedIn ?
