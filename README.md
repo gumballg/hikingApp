@@ -24,7 +24,7 @@ MVP/USER STORY:
 WIREFRAMES:
 
 ![Web App Login](front-end/hikingapp/public/images/HikeOn_Wireframes_Login_Web.png)
-![Web App SAP](front-end/hikingapp/public/images/HikeOn_SAP_Web.png)
+![Web App SAP](front-end/hikingapp/public/images/HikeOn_Wireframes_SAP_Web.png)
 
 ![Mobile App Login](front-end/hikingapp/public/images/HikeOn_Wireframes_Login_Mobile.png)
 ![Mobile App Main](front-end/hikingapp/public/images/HikeOn_Wireframes_SAP_Mobile_Main.png)
