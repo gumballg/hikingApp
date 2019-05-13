@@ -72,11 +72,10 @@ class App extends Component {
     }
   }
   render(){
-    // console.log(this.state.currentUser.username)
     return (
       <div className="App">
        {this.state.loggedIn ?
-       <MainContainer/>
+       <MainContainer currentUser = {this.state.currentUser}/>
        :
        <AuthPage handleLogin = {this.handleLogin} handleRegister = {this.handleRegister}/>
       }

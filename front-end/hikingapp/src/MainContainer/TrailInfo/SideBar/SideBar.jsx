@@ -5,12 +5,7 @@ import WeatherInfo from '../WeatherInfo/WeatherInfo';
 class SideBar extends Component {
     constructor(){
         super();
-        // this.state = {
-        //     lat: '',
-        //     lng: ''
-        // }
-    }
-    
+    } 
     render(){
         return (
             <div>

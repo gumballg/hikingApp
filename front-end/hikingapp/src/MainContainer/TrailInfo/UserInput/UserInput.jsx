@@ -5,7 +5,9 @@ class UserInput extends Component {
         super();
         this.state = {
             city: '',
-            state: ''
+            state: '',
+            minLength: '',
+            difficulty: ''
         }
     }
     handleChange = (e) => {
@@ -24,6 +26,8 @@ class UserInput extends Component {
                 <form onSubmit = {this.handleSubmit}>
                     City: <input onChange = {this.handleChange} type = "text" name = "city"/>
                     State: <input onChange = {this.handleChange} type = "text" name = "state"/>
+                    Minimum Length: <input onChange = {this.handleChange} type = 'number' name = 'minLength'/>
+                    Difficulty: <input onChange = {this.handleChange} type = 'text' name = 'difficulty'/>
                     <input type = "submit"/>
                 </form>
             </div>

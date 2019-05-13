@@ -8,13 +8,14 @@ class MainContainer extends Component {
         super();
         this.state = {
             lat: '',
-            lng: ''
+            lng: '',
         }
     }
     render(){
+        console.log(`${this.props.currentUser.username} THIS IS CURRENT USER ON THE MAIN CONTAINER`)
         return (
             <div>
-                <Header/>
+                <Header currentUser = {this.props.currentUser}/>
                 <TrailInfo/>
             </div>
         )

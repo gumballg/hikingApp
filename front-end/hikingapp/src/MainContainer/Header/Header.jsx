@@ -4,13 +4,12 @@ class Header extends Component {
     constructor(){
         super();
         this.state = {
-
         }
     }
     render(){
         return (
             <div>
-                <h1>Hi I'm a header</h1>
+                <h1>Hello {this.props.currentUser.username}, happy hiking!</h1>
             </div>
         )
     }
