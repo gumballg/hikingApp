@@ -10,13 +10,13 @@ class WeatherInfo extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        // console.log(this.props)
         this.findWeather();
     
     }
 
     componentWillReceiveProps() {
-        console.log(this.props)
+        // console.log(this.props)
         this.findWeather();
     }
 
@@ -32,7 +32,7 @@ class WeatherInfo extends Component {
                 this.setState({
                     currWeather: parsedResponse
                 })
-                console.log(this.state.currWeather)
+                // console.log(this.state.currWeather)
             }
         
             }catch(err){

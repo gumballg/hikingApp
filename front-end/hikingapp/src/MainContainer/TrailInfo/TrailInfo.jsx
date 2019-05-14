@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import UserInput from './UserInput/UserInput';
 import WeatherInfo from './WeatherInfo/WeatherInfo'
+import Breweries from './Breweries/Breweries';
 
 
 class TrailInfo extends Component {
@@ -13,6 +14,7 @@ class TrailInfo extends Component {
             state: '',
             trails: [],
             minLength: '',
+            maxLength: '',
             difficulty: '',
         }
     }
@@ -29,6 +31,7 @@ class TrailInfo extends Component {
                 city: formData.city,
                 state: formData.state,
                 minLength: formData.minLength,
+                maxLength: formData.maxLength,
                 difficulty: formData.difficulty
             })
         }
@@ -38,13 +41,14 @@ class TrailInfo extends Component {
         }
     }
     findTrails = async () => {
+        console.log(this.state.maxLength)
         try{
         const searchURL = `https://www.hikingproject.com/data/get-trails?lat=${this.state.lat}&lon=${this.state.lng}&minLength=${this.state.minLength}&${this.state.difficulty}&key=200465360-942e3fb792b81fa531e25b7484cbc0f9`
         const result = await fetch(searchURL);
         const parsedResponse = await result.json();
         if(result.status === 200){
             this.setState({
-                trails: parsedResponse.trails
+                trails: parsedResponse.trails.filter(trails => trails.length <= this.state.maxLength)
             })
         }
         }catch(err){
@@ -52,7 +56,9 @@ class TrailInfo extends Component {
         }
     }
 
-    render(){
+    render(formData){
+        // console.log(formData)
+        console.log(this.state.lat, this.state.lng, 'IN TRAILS INFO')
         const trailList = this.state.trails.map((trail) => {
             return (
                 <div>
@@ -62,13 +68,18 @@ class TrailInfo extends Component {
                 </div>
             )
         })
-        console.log('this is the lat', this.state.lat, this.state.lng)
+        // console.log('this is the lat', this.state.lat, this.state.lng)
         return(
             <div>
                 <UserInput findGeoCode = {this.findGeoCode}/>
                 {trailList}
                 {this.state.lat !== '' ?
                 <WeatherInfo lat = {this.state.lat} lng = {this.state.lng} />
+                :
+                null
+                }
+                {this.state.lng !== ''?
+                <Breweries lat = {this.state.lat} lng = {this.state.lng}/>
                 :
                 null
                 }
