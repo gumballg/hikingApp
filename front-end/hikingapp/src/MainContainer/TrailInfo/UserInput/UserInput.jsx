@@ -30,9 +30,9 @@ class UserInput extends Component {
                     Minimum Length: <select onChange = {this.handleChange} value = {this.state.minLength}name = 'minLength'>
                         <option value = '0'>Set Min Miles</option>
                         <option value = '1'>1 mile</option>
-                        <option value = '5'>10 miles</option>
-                        <option value = "10">15 miles</option>
-                        <option value = "15">20 miles</option>
+                        <option value = '10'>10 miles</option>
+                        <option value = "15">15 miles</option>
+                        <option value = "20">20 miles</option>
                         </select>
                     Maximum Length: <select onChange = {this.handleChange} value = {this.state.maxLength} name = 'maxLength'>
                         <option value = '0'>Set Max Miles</option>

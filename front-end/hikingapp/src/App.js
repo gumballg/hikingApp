@@ -39,7 +39,7 @@ class App extends Component {
         }
       })
       const parsedLoginResponse = await loginResponse.json();
-      console.log(parsedLoginResponse);
+      console.log(parsedLoginResponse, 'LOGIN HANDLED');
       if(parsedLoginResponse.status === 200){
         this.setState({
           loggedIn: true,
@@ -71,11 +71,47 @@ class App extends Component {
       })
     }
   }
+  updateUser = async (id, user) => {
+    console.log('UPDATE CLICKED')
+    const response = await fetch(`http://localhost:9000/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(user),
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    console.log('MADE IT PAST RESPONSE')
+    const updatedUser = await response.json();
+    console.log(updatedUser);
+    if(response.status === 200){
+        console.log('GOOD JOB!!!!!')
+        this.setState({
+            currentUser: updatedUser.data
+        })
+    }
+
+  }
+  deleteUser = async(id) => {
+    if(this.state.currentUser !== null){
+      console.log(`DELETING USER ${this.state.currentUser._id}`)
+      const deletedUser = await fetch(`http://localhost:9000/users/${this.state.currentUser._id}`, {
+        method: 'DELETE'
+      })
+      if(deletedUser.status === 200){
+        this.setState({
+          loggedIn: false,
+          currentUser: null
+        })
+      }
+    }
+  } 
   render(){
+    console.log(this.state)
     return (
       <div className="App">
        {this.state.loggedIn ?
-       <MainContainer currentUser = {this.state.currentUser}/>
+       <MainContainer loggedIn = {this.state.loggedIn} currentUser = {this.state.currentUser} updateUser = {this.updateUser} deleteUser = {this.deleteUser}/>
        :
        <AuthPage handleLogin = {this.handleLogin} handleRegister = {this.handleRegister}/>
       }

@@ -6,6 +6,17 @@ router.get('/', (req, res) => {
     res.send('HELLO')
 })
 
+router.get('/:id', (req, res) => {
+    User.findById(req.params.id, (err, foundUser) => {
+        if(err){
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json(foundUser);
+        }
+    })
+})
+
 router.post('/login', async (req, res) => {
     try{
         const foundUser = await User.findOne({username: req.body.username});
@@ -65,15 +76,34 @@ router.get('/current', async (req, res) => {
     }
 })
 
-router.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-      if(err){
-        res.send(err);
-      } else {
-        res.redirect('/');
-      }
+router.put('/:id', (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, newUser) => {
+        if(err){
+            console.log(err);
+        }
+        console.log(newUser);
+        res.json({
+            status: 200,
+            data: newUser
+        })
     })
-  })
+})
+
+// router.get('/logout', (req, res) => {
+//     req.session.destroy((err) => {
+//       if(err){
+//         res.send(err);
+//       } else {
+//         res.redirect('/');
+//       }
+//     })
+//   })
+
+router.delete('/:id', (req, res) => {
+    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+        res.json(deletedUser);
+    })
+})
 
 
 
