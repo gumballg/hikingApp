@@ -9,7 +9,10 @@ class AuthHeader extends Component {
     render(){
         return (
             <div>
-                <h1>HIKE ON</h1>
+            <div>
+                <h1 className = 'loginLogo'>HIKE ON</h1>
+            </div>
+            <div className = 'loginBar'></div>
             </div>
         )
     }

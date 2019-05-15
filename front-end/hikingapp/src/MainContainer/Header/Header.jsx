@@ -9,7 +9,12 @@ class Header extends Component {
     render(){
         return (
             <div>
-                <h1>Hello {this.props.currentUser.username}, happy hiking!</h1>
+                <div className = 'loginLogo'>
+                    <h1>HIKE ON</h1>
+                </div>
+                <div className = 'loginBar'>
+                <p>Hello {this.props.currentUser.username}, happy hiking!</p>
+                </div>
             </div>
         )
     }

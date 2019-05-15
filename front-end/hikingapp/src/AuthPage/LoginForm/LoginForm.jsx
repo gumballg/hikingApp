@@ -19,11 +19,17 @@ class LoginForm extends Component {
     }
     render(){
         return(
-            <div>
-                <form onSubmit = {this.handleSubmit}>
-                    Username: <input onChange = {this.handleChange} value = {this.state.username} type = "text" name = "username"/>
-                    Password: <input onChange = {this.handleChange} value = {this.state.password} type = "password" name = "password"/>
-                    <input type = "submit"/>
+            <div className = 'loginFormComponent'>
+                <form onSubmit = {this.handleSubmit} className = "stackedForm">
+                    <div>
+                        <input onChange = {this.handleChange} value = {this.state.username} className = "formInput" placeholder = 'USERNAME' type = "text" name = "username"/>
+                    </div>
+                    <div>
+                        <input onChange = {this.handleChange} value = {this.state.password} className = "formInput" placeholder = 'PASSWORD' type = "password" name = "password"/>
+                    </div>
+                    <div>
+                        <button type = "submit" className = "loginSubmit">LOGIN</button>
+                    </div>
                 </form>
             </div>
         )

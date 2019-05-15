@@ -31,3 +31,142 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+/* LOGIN PAGE STYLE */
+
+.authPage {
+  height: 100vh;
+  margin: 0;
+  background-image: url('./images/_login_topo_white_topo.jpg');
+  background-size: cover; 
+
+}
+.loginHeader {
+  background: black;
+  color: white;
+  font-size: 40px;
+  margin-top: -60px;
+  box-flex: flex;
+  height: 20vh;
+}
+
+.loginBar {
+  background: -webkit-linear-gradient(left, #a90329 0%,#8f0222 44%,#6d0019 100%);
+  height: 5vh;
+  margin-top: -35px;
+}
+
+.loginLogo {
+  text-align: left;
+  padding-left: 100px;
+  padding-right: auto;
+  padding-top: 20px;
+}
+
+.logo img {
+  height: 150px;
+}
+
+.loginContent {
+  margin-top: 100px;
+}
+
+.loginType h1 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 50px;
+}
+
+.loginSubmit {
+  font-family: 'Oswald', sans-serif;
+  background-color: #8f0222;
+  border-radius: 0px;
+  font-size: 20px;
+  color: white;
+  border-style: none;
+  width: 39.6vh;
+  margin-top: 3px;
+  height: 40px;
+
+}
+
+.formInput {
+  font-family: 'Oswald', sans-serif;
+  border-color: #8f0222;
+  padding: 5px 10px;
+  margin: 5px;
+  width: 37vh;
+  font-size: 20px;
+}
+
+.registerButton {
+  font-family: 'Oswald', sans-serif;
+  background-color: rgba(255, 255, 255, 0);
+  color: #8f0222;
+  font-size: 18px;
+  border-style: none;
+  margin-top: -30px;
+  margin-bottom: 20px;
+}
+
+/* MAIN PAGE STYLE */
+
+.mainPage {
+  height: 100vh;
+  margin: 0;
+  background-image: url('./images/_black_topo.jpg');
+  background-size: cover; 
+}
+
+.mainHeader {
+  background: white;
+  color: black;
+  font-size: 40px;
+  margin-top: -60px;
+  box-flex: flex;
+  height: 20vh;
+}
+
+select {
+  border-radius: 0
+}
+
+@media (max-width: 800px){
+  .loginLogo{
+    text-align: center;
+    padding-left: 0px;
+    padding-top: 15px;
+  }
+  .loginHeader {
+    height: 22vh;
+  }
+  .logo img {
+    height: 100px;
+  }
+  .loginBar {
+    margin-top: -40px
+  }
+
+  .loginType h1 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 30px;
+  }
+  .loginContent {
+    margin-top: 80px;
+  }
+  .loginSubmit {
+    width: 40.5vh;
+  }
+}
+
+
+
+
+
+
+

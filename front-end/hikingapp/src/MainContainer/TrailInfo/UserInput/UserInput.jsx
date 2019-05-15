@@ -25,31 +25,43 @@ class UserInput extends Component {
         return (
             <div>
                 <form onSubmit = {this.handleSubmit}>
-                    City: <input onChange = {this.handleChange} type = "text" name = "city"/>
-                    State: <input onChange = {this.handleChange} type = "text" name = "state"/>
-                    Minimum Length: <select onChange = {this.handleChange} value = {this.state.minLength}name = 'minLength'>
-                        <option value = '0'>Set Min Miles</option>
-                        <option value = '1'>1 mile</option>
-                        <option value = '10'>10 miles</option>
-                        <option value = "15">15 miles</option>
-                        <option value = "20">20 miles</option>
+                    <div>
+                        <input onChange = {this.handleChange} className = "formInput" placeholder = 'CITY' type = "text" name = "city"/>
+                    </div>
+                    <div>
+                        <input onChange = {this.handleChange} className = "formInput" placeholder = 'STATE' type = "text" name = "state"/>
+                    </div>
+                    <div>
+                        <select onChange = {this.handleChange} className = "formInput" value = {this.state.minLength}name = 'minLength'>
+                            <option value = '0'>MIN MILES</option>
+                            <option value = '1'>1 MILE</option>
+                            <option value = '10'>10 MILES</option>
+                            <option value = "15">15 MILES</option>
+                            <option value = "20">20 MILES</option>
                         </select>
-                    Maximum Length: <select onChange = {this.handleChange} value = {this.state.maxLength} name = 'maxLength'>
-                        <option value = '0'>Set Max Miles</option>
-                        <option value = '5'>5 miles</option>
-                        <option value = '10'>10 miles</option>
-                        <option value = "15">15 miles</option>
-                        <option value = "20">20 miles</option>
-                        <option value = "25">25 miles</option>
-                        <option value = "30">30 miles</option>
+                    </div>
+                    <div>
+                        <select onChange = {this.handleChange} className = "formInput" value = {this.state.maxLength} name = 'maxLength'>
+                            <option value = '0'>MAX MILES</option>
+                            <option value = '5'>5 MILES</option>
+                            <option value = '10'>10 MILES</option>
+                            <option value = "15">15 MILES</option>
+                            <option value = "20">20 MILES</option>
+                            <option value = "25">25 MILES</option>
+                            <option value = "30">30 MILES</option>
                         </select>
-                    Difficulty: <select onChange = {this.handleChange} value = {this.state.difficulty} name = 'difficulty'>
-                        <option value = 'greenBlue'>Novice</option>
-                        <option value = 'blue'>Proficient</option>
-                        <option value = "blueBlack">Strenuous</option>
-                        <option value = "black">Extemely Strenuous</option>
+                    </div>
+                    <div>
+                        <select onChange = {this.handleChange} className = "formInput" value = {this.state.difficulty} name = 'difficulty'>
+                            <option value = 'greenBlue'>NOVICE</option>
+                            <option value = 'blue'>PROFICIENT</option>
+                            <option value = "blueBlack">STRENUOUS</option>
+                            <option value = "black">EXTREMELY STRENUOUS</option>
                         </select>
-                    <input type = "submit"/>
+                    </div>
+                    <div>
+                        <button type = "submit" className = "loginSubmit">FIND TRAILS</button>
+                    </div>
                 </form>
             </div>
         )
@@ -57,5 +69,4 @@ class UserInput extends Component {
 }
 
 
-export default UserInput
-;
+export default UserInput;

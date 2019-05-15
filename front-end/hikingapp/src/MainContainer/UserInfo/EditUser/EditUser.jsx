@@ -4,7 +4,7 @@ class EditUser extends Component {
     constructor(props){
         super(props);
         this.state = {
-            location: ''
+            location: '',
         }
     }
     handleChange = (e) => {
@@ -14,15 +14,20 @@ class EditUser extends Component {
         })
     }
     handleSubmit = (e) => {
+        console.log(this.props)
         e.preventDefault();
         this.props.updateUser(this.props.currentUser._id, this.state)
     }
     render(){
         return (
-            <form onSubmit={this.handleSubmit}>
-                Location: <input onChange={this.handleChange} type="text" name="location"/>
-                <input type="submit"/>
-            </form>
+            <div>
+                 {!this.props.isHidden}
+                <p>{this.props.currentUser.location}</p>
+                <form onSubmit={this.handleSubmit}>
+                    Location: <input onChange={this.handleChange} type="text" name="location"/>
+                    <input type="submit"/>
+                </form>
+            </div>
         )
     }
 }

@@ -6,7 +6,7 @@ class RegistrationForm extends Component {
         this.state = {
             username: "",
             password: "",
-            location: ""
+            location: "",
         }
     }
     handleSubmit = (e) => {
@@ -22,12 +22,18 @@ class RegistrationForm extends Component {
         return (
             <div>
                 <form className = 'registration' onSubmit={this.handleSubmit}>
-                    Username: <input onChange={this.handleChange} type="text" name="username"/>
-                    <br></br>
-                    Password: <input onChange={this.handleChange} type="password" name="password"/>
-                    <br></br>
-                    Your Homebase: <input onChange={this.handleChange} type="text" name="location"/>
-                    <input type="submit" value="Register" />
+                    <div>
+                        <input onChange={this.handleChange} className = "formInput" type="text" placeholder = 'USERNAME 'name="username"/>
+                    </div>
+                    <div>
+                        <input onChange={this.handleChange} className = "formInput" placeholder = 'PASSWORD' type="password" name="password"/>
+                    </div>
+                    <div>
+                        <input onChange={this.handleChange} className = "formInput" placeholder = 'HOMEBASE' type="text" name="location"/>
+                    </div>
+                    <div>
+                        <button type="submit" value="Register" className = "loginSubmit">REGISTER</button>
+                    </div>
                 </form>
             </div>
         )
