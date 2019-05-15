@@ -81,23 +81,12 @@ router.put('/:id', (req, res) => {
         if(err){
             console.log(err);
         }
-        console.log(newUser);
         res.json({
             status: 200,
             data: newUser
         })
     })
 })
-
-// router.get('/logout', (req, res) => {
-//     req.session.destroy((err) => {
-//       if(err){
-//         res.send(err);
-//       } else {
-//         res.redirect('/');
-//       }
-//     })
-//   })
 
 router.delete('/:id', (req, res) => {
     User.findByIdAndRemove(req.params.id, (err, deletedUser) => {

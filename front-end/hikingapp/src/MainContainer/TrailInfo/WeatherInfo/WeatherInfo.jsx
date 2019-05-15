@@ -45,8 +45,8 @@ class WeatherInfo extends Component {
             <div>
                 {this.state.currWeather.currently !== undefined ?
                 <div>
-                    <p>{this.state.currWeather.currently.summary}</p>
-                    <p>{this.state.currWeather.currently.temperature}</p>
+                    <h2>{this.state.currWeather.currently.summary}</h2>
+                    <h2>{this.state.currWeather.currently.temperature}</h2>
                 </div>
                 :
                 null

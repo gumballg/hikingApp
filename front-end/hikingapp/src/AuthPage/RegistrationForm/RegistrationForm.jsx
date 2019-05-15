@@ -5,7 +5,8 @@ class RegistrationForm extends Component {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            location: ""
         }
     }
     handleSubmit = (e) => {
@@ -18,13 +19,18 @@ class RegistrationForm extends Component {
         })
     }
     render(){
-        return <form onSubmit={this.handleSubmit}>
-            Username: <input onChange={this.handleChange} type="text" name="username"/>
-            <br></br>
-            Password: <input onChange={this.handleChange} type="password" name="password"/>
-            <br></br>
-            <input type="submit" value="Register" />
-        </form>
+        return (
+            <div>
+                <form className = 'registration' onSubmit={this.handleSubmit}>
+                    Username: <input onChange={this.handleChange} type="text" name="username"/>
+                    <br></br>
+                    Password: <input onChange={this.handleChange} type="password" name="password"/>
+                    <br></br>
+                    Your Homebase: <input onChange={this.handleChange} type="text" name="location"/>
+                    <input type="submit" value="Register" />
+                </form>
+            </div>
+        )
     }
 }
 export default RegistrationForm

@@ -43,7 +43,7 @@ class TrailInfo extends Component {
     findTrails = async () => {
         console.log(this.state.maxLength)
         try{
-        const searchURL = `https://www.hikingproject.com/data/get-trails?lat=${this.state.lat}&lon=${this.state.lng}&minLength=${this.state.minLength}&${this.state.difficulty}&key=200465360-942e3fb792b81fa531e25b7484cbc0f9`
+        const searchURL = `https://www.hikingproject.com/data/get-trails?lat=${this.state.lat}&lon=${this.state.lng}&minLength=${this.state.minLength}&${this.state.difficulty}&maxDistance=10&key=200465360-942e3fb792b81fa531e25b7484cbc0f9`
         const result = await fetch(searchURL);
         const parsedResponse = await result.json();
         if(result.status === 200){

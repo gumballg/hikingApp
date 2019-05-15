@@ -8,16 +8,12 @@ class EditUser extends Component {
         }
     }
     handleChange = (e) => {
-        console.log('ALSKDJAS')
-        console.log(this.state, 'THIS IS THE STATE ON THE EDIT USER')
-        console.log(this.props.currentUser, 'THIS IS CURRENT USER ON THE EDIT USER');
+
         this.setState({
             [e.target.name]: e.target.value
         })
     }
     handleSubmit = (e) => {
-        // console.log(this.props.currentUser._id);
-        // console.log(this.state);
         e.preventDefault();
         this.props.updateUser(this.props.currentUser._id, this.state)
     }
