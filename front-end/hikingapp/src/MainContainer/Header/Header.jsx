@@ -13,7 +13,9 @@ class Header extends Component {
                     <h1>HIKE ON</h1>
                 </div>
                 <div className = 'loginBar'>
-                <p>Hello {this.props.currentUser.username}, happy hiking!</p>
+                    <div className = 'welcomeText'>
+                        <p>hello {this.props.currentUser.username}, happy hiking!</p>
+                    </div>
                 </div>
             </div>
         )

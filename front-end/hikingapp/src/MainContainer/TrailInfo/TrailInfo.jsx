@@ -57,32 +57,66 @@ class TrailInfo extends Component {
     }
 
     render(formData){
+        console.log(this.state.trails)
         // console.log(formData)
         console.log(this.state.lat, this.state.lng, 'IN TRAILS INFO')
         const trailList = this.state.trails.map((trail) => {
             return (
-                <div>
-                   <p>{trail.name}</p> 
-                   <p>{trail.location}</p>
-                   <p>{trail.length} miles</p>
+                <div className = 'eachTrail'>
+                    <div>
+                         <h4>{trail.name}</h4> 
+                    </div>
+                     <div>
+                        <p>{trail.location}</p> 
+                     </div>
+                    <div className = 'mainTrailInfo'>
+                        <p>{trail.length} miles</p>
+                     </div>
+                    <div>
+                        <p>peak elevation: {trail.high}</p>
+                    </div>
+                    <div>
+                        <p>rating: {trail.stars} stars</p>
+                    </div>
+                    <div>
+                        <p><a href = {trail.url}>more info</a></p>
+                    </div>
                 </div>
             )
         })
         // console.log('this is the lat', this.state.lat, this.state.lng)
         return(
-            <div>
-                <UserInput findGeoCode = {this.findGeoCode}/>
-                {trailList}
+            <div className = 'whatIsThisDiv'>
+                <div>
+                    <div className = 'userInput'>
+                        <UserInput findGeoCode = {this.findGeoCode}/>
+                    </div>
                 {this.state.lat !== '' ?
-                <WeatherInfo lat = {this.state.lat} lng = {this.state.lng} />
+                    <div className = 'weather'>
+                        <WeatherInfo lat = {this.state.lat} lng = {this.state.lng} city = {this.state.city} />
+                    </div>
                 :
                 null
                 }
                 {this.state.lng !== ''?
-                <Breweries lat = {this.state.lat} lng = {this.state.lng}/>
+                    <div className = 'breweries'>
+                        <Breweries lat = {this.state.lat} lng = {this.state.lng} city = {this.state.city}/>
+                    </div>
                 :
                 null
                 }
+                </div>
+                {this.state.lng !== '' ?
+                <div className = 'trailInfo'>
+                    <h2>Hiking Trails Near {this.state.city}, {this.state.state}</h2>
+                    <div className = 'trailList'>
+                    {trailList}
+                    </div>
+                </div>
+                :
+                null
+                }
+                
             </div>
         )
     }

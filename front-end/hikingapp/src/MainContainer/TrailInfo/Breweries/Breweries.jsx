@@ -37,12 +37,13 @@ class Breweries extends Component {
         const breweryList = this.state.breweries.map((brewery) => {
             return (
                 <div>
-                   <p>{brewery.name} | {brewery.rating}/5 stars</p>
+                   <p>{brewery.name}</p>
                 </div>
             )
         })
         return(
             <div>
+                <h2>Breweries near {this.props.city}</h2>
                 {breweryList}
             </div>
     )

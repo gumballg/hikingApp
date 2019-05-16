@@ -14,11 +14,11 @@ class MainContainer extends Component {
                 <div className = 'mainHeader'>
                     <Header currentUser = {this.props.currentUser}/>
                 </div>
-                <div>
-                <TrailInfo/>
+                <div className = 'mainInfo'>
+                    <TrailInfo/>
                 </div>
-                <div>
-                <UserInfo loggedIn = {this.props.loggedIn} currentUser = {this.props.currentUser} updateUser = {this.props.updateUser} deleteUser = {this.props.deleteUser}/>
+                <div className = 'userInfo'>
+                    <UserInfo loggedIn = {this.props.loggedIn} currentUser = {this.props.currentUser} updateUser = {this.props.updateUser} deleteUser = {this.props.deleteUser}/>
                 </div>
             </div>
         )
