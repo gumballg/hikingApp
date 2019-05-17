@@ -20,15 +20,19 @@ class UserInfo extends Component {
     }
     render(){
         return (
-            <div>
-            <p>{this.props.currentUser.username}</p>
-            <p>{!this.state.isHidden && this.props.currentUser.location}</p>
-            <button onClick = {this.toggleHidden.bind(this)}>
-                Edit Homebase!
-            </button>
-                {this.state.isHidden && <EditUser  currentUser = {this.props.currentUser} updateUser = {this.props.updateUser}/>}
-                <br/>
-            <button onClick = {this.props.deleteUser}>Delete Account</button>
+            <div class = 'allUserInfo'>
+                {this.state.isHidden ? 
+                <EditUser  toggleHidden={this.toggleHidden.bind(this)} currentUser = {this.props.currentUser} updateUser = {this.props.updateUser}/>
+                :
+                <div class = 'userButtons' >
+                    <p>{this.props.currentUser.username} <span class = 'heart'></span><span>'s  </span> {!this.state.isHidden && this.props.currentUser.location}</p>
+                    <button onClick = {this.toggleHidden.bind(this)}>
+                        Edit Homebase!
+                    </button>
+                    <button onClick = {this.props.deleteUser}>Delete Account</button>
+                </div>
+                }
+
             </div>
         )
     }

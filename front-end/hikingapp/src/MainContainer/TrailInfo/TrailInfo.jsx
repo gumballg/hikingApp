@@ -43,13 +43,19 @@ class TrailInfo extends Component {
     findTrails = async () => {
         console.log(this.state.maxLength)
         try{
-        const searchURL = `https://www.hikingproject.com/data/get-trails?lat=${this.state.lat}&lon=${this.state.lng}&minLength=${this.state.minLength}&${this.state.difficulty}&maxDistance=10&key=200465360-942e3fb792b81fa531e25b7484cbc0f9`
+        const searchURL = `https://www.hikingproject.com/data/get-trails?lat=${this.state.lat}&lon=${this.state.lng}&minLength=${this.state.minLength}&maxDistance=10&key=200465360-942e3fb792b81fa531e25b7484cbc0f9`
         const result = await fetch(searchURL);
         const parsedResponse = await result.json();
         if(result.status === 200){
-            this.setState({
-                trails: parsedResponse.trails.filter(trails => trails.length <= this.state.maxLength)
-            })
+            if(this.state.difficulty === ''){
+                this.setState({
+                    trails: parsedResponse.trails.filter(trails => trails.length < this.state.maxLength)
+                }) 
+            } else {
+                this.setState({
+                    trails: parsedResponse.trails.filter(trails => trails.length < this.state.maxLength && trails.difficulty === this.state.difficulty)
+                })
+            }
         }
         }catch(err){
             console.log(err);
@@ -79,7 +85,7 @@ class TrailInfo extends Component {
                         <p>rating: {trail.stars} stars</p>
                     </div>
                     <div>
-                        <p><a href = {trail.url}>more info</a></p>
+                        <p><a href = {trail.url} target="_blank">more info</a></p>
                     </div>
                 </div>
             )

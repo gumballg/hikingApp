@@ -16,16 +16,16 @@ class EditUser extends Component {
     handleSubmit = (e) => {
         console.log(this.props)
         e.preventDefault();
+        this.props.toggleHidden()
         this.props.updateUser(this.props.currentUser._id, this.state)
     }
     render(){
         return (
-            <div>
+            <div className = 'editInfo'>
                  {!this.props.isHidden}
-                <p>{this.props.currentUser.location}</p>
                 <form onSubmit={this.handleSubmit}>
-                    Location: <input onChange={this.handleChange} type="text" name="location"/>
-                    <input type="submit"/>
+                    <input onChange={this.handleChange} type="text" name="location" placeholder = {this.props.currentUser.location}/>
+                    <button type = 'submit'>UPDATE HOMEBASE</button>
                 </form>
             </div>
         )

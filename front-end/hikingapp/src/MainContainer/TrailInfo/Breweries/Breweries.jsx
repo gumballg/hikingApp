@@ -17,7 +17,7 @@ class Breweries extends Component {
     }
 
     findBreweries = async () => {
-        console.log(this.props)
+        // console.log(this.props)
         try{
         const searchURL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=brewery&location=${this.props.lat},${this.props.lng}&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg`
         const result = await fetch(searchURL)
@@ -26,7 +26,7 @@ class Breweries extends Component {
             this.setState({
                 breweries: parsedResponse.results.filter(breweries => breweries.rating > 1)
             })
-            console.log(this.state.breweries)
+            // console.log(this.state.breweries)
         }
         }catch(err){
             console.log('YOURE WRONG')

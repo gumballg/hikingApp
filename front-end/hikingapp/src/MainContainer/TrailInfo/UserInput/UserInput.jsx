@@ -8,7 +8,7 @@ class UserInput extends Component {
             state: '',
             minLength: '0',
             maxLength: '0',
-            difficulty: 'greenBlue'
+            difficulty: ''
         }
     }
     handleChange = (e) => {
@@ -53,10 +53,13 @@ class UserInput extends Component {
                     </div>
                     <div>
                         <select onChange = {this.handleChange} className = "formInput select" value = {this.state.difficulty} name = 'difficulty'>
-                            <option value = 'greenBlue'>NOVICE</option>
-                            <option value = 'blue'>PROFICIENT</option>
-                            <option value = "blueBlack">STRENUOUS</option>
-                            <option value = "black">EXTREMELY STRENUOUS</option>
+                            <option value = ''>DIFFICULTY</option>
+                            <option value = 'green'>NOVICE</option>
+                            <option value = 'greenBlue'>PROFICIENT</option>
+                            <option value = "blue">STRENUOUS</option>
+                            <option value = "blueBlack">EXTREMELY STRENUOUS</option>
+                            <option value = "black">YOU'RE WILD</option>
+                            <option value = ''>ALL DIFFICULTIES</option>
                         </select>
                     </div>
                     <div>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import logo from './images/logo.png'
 
 class Header extends Component {
     constructor(){
@@ -9,8 +10,9 @@ class Header extends Component {
     render(){
         return (
             <div>
-                <div className = 'loginLogo'>
-                    <h1>HIKE ON</h1>
+                <div className = 'mainLogo'>
+                         <h1>HIKE ON</h1>    
+                         <img src = {logo}/>
                 </div>
                 <div className = 'loginBar'>
                     <div className = 'welcomeText'>
