@@ -16,21 +16,22 @@ class App extends Component {
     this.checkForUser();
   }
   checkForUser = async () => {
-    const currentUser = await fetch('http://localhost:9000/users/current', {
+    console.log('im here');
+    const currentUser = await fetch('http://localhost:8080/users/current', {
       credentials: 'include'
     })
     const parsedResponse = await currentUser.json();
-    if(parsedResponse.status === 200){
+    if(currentUser.status === 200){
       this.setState({
         loggedIn: true,
-        currentUser: parsedResponse.data
+        currentUser: parsedResponse
       })
     }
   }
   handleLogin = async (formData) => {
     console.log(formData);
     try{
-      const loginResponse = await fetch('http://localhost:9000/users/login', {
+      const loginResponse = await fetch('http://localhost:8080/login', {
         method: 'POST',
         body: JSON.stringify(formData),
         credentials: 'include',
@@ -39,11 +40,10 @@ class App extends Component {
         }
       })
       const parsedLoginResponse = await loginResponse.json();
-      console.log(parsedLoginResponse, 'LOGIN HANDLED');
-      if(parsedLoginResponse.status === 200){
+      if(loginResponse.status === 200){
         this.setState({
           loggedIn: true,
-          currentUser: parsedLoginResponse.data
+          currentUser: parsedLoginResponse
         })
       } else {
         console.log('Check yoself')
@@ -54,7 +54,7 @@ class App extends Component {
   }
   handleRegister = async (formData) => {
     console.log(formData);
-    const response = await fetch('http://localhost:9000/users', {
+    const response = await fetch('http://localhost:8080/users', {
       method: 'POST',
       body: JSON.stringify(formData),
       credentials: 'include',
@@ -63,17 +63,18 @@ class App extends Component {
       }
     })
     const parsedResponse = await response.json();
+    console.log('parsedResponse');
     console.log(parsedResponse);
-    if(parsedResponse.status === 200){
+    if(response.status === 200){
       this.setState({
         loggedIn: true,
-        currentUser: parsedResponse.data
+        currentUser: parsedResponse
       })
     }
   }
   updateUser = async (id, user) => {
     console.log('UPDATE CLICKED')
-    const response = await fetch(`http://localhost:9000/users/${id}`, {
+    const response = await fetch(`http://localhost:8080/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify(user),
         credentials: 'include',
@@ -82,20 +83,24 @@ class App extends Component {
         }
     })
     console.log('MADE IT PAST RESPONSE')
+    console.log(response);
     const updatedUser = await response.json();
+    console.log('updatedUser');
     console.log(updatedUser);
+    console.log('data');
+    console.log(updatedUser.data);
     if(response.status === 200){
         console.log('GOOD JOB!!!!!')
         this.setState({
-            currentUser: updatedUser.data
+            currentUser: updatedUser
         })
     }
 
   }
   deleteUser = async(id) => {
     if(this.state.currentUser !== null){
-      console.log(`DELETING USER ${this.state.currentUser._id}`)
-      const deletedUser = await fetch(`http://localhost:9000/users/${this.state.currentUser._id}`, {
+      console.log(`DELETING USER ${this.state.currentUser.id}`)
+      const deletedUser = await fetch(`http://localhost:8080/users/${this.state.currentUser.id}`, {
         method: 'DELETE'
       })
       if(deletedUser.status === 200){
@@ -111,9 +116,9 @@ class App extends Component {
     return (
       <div className="App">
        {this.state.loggedIn ?
-       <MainContainer loggedIn = {this.state.loggedIn} currentUser = {this.state.currentUser} updateUser = {this.updateUser} deleteUser = {this.deleteUser}/>
+       <MainContainer loggedIn={this.state.loggedIn} currentUser={this.state.currentUser} updateUser={this.updateUser} deleteUser={this.deleteUser}/>
        :
-       <AuthPage handleLogin = {this.handleLogin} handleRegister = {this.handleRegister}/>
+       <AuthPage handleLogin={this.handleLogin} handleRegister={this.handleRegister}/>
       }
       </div>
     );

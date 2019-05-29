@@ -14,10 +14,11 @@ class EditUser extends Component {
         })
     }
     handleSubmit = (e) => {
-        console.log(this.props)
         e.preventDefault();
+        console.log("here is this.props in handleSubmit() in EditUser right before we call udpateUser()");
+        console.log(this.props)
         this.props.toggleHidden()
-        this.props.updateUser(this.props.currentUser._id, this.state)
+        this.props.updateUser(this.props.currentUser.id, this.state)
     }
     render(){
         return (

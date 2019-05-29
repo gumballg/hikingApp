@@ -19,6 +19,8 @@ class UserInfo extends Component {
         });
     }
     render(){
+        console.log("props");
+        console.log(this.props);
         return (
             <div class = 'allUserInfo'>
                 {this.state.isHidden ? 
