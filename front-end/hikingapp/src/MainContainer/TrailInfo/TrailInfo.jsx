@@ -61,12 +61,35 @@ class TrailInfo extends Component {
             console.log(err);
         }
     }
+    addTrail = async (trail, e) => {
+        try{
+            const addedTrail = await fetch('http://localhost:8080/trails', {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(trail),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            console.log('addedTrail');
+            console.log(addedTrail);
+            const parsedResponse = await addedTrail.json();
+            console.log('parsedResponse');
+            console.log(parsedResponse);
+        }
+        catch(err){
+            console.log(err);
+        }        
+    }
 
     render(formData){
         console.log(this.state.trails)
         // console.log(formData)
         console.log(this.state.lat, this.state.lng, 'IN TRAILS INFO')
+
         const trailList = this.state.trails.map((trail) => {
+            console.log("trail name");
+            console.log(trail.name);
             return (
                 <div className = 'eachTrail'>
                     <div>
@@ -87,6 +110,7 @@ class TrailInfo extends Component {
                     <div>
                         <p><a href = {trail.url} target="_blank">more info</a></p>
                     </div>
+                    <button onClick={this.addTrail.bind(null, trail)}>Add Trail</button>
                 </div>
             )
         })

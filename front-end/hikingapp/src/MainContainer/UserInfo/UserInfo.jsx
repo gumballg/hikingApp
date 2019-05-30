@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditUser from './EditUser/EditUser';
+import UserTrails from './UserTrails/UserTrails'
 
 class UserInfo extends Component {
     constructor(props){
@@ -27,14 +28,14 @@ class UserInfo extends Component {
                 <EditUser  toggleHidden={this.toggleHidden.bind(this)} currentUser = {this.props.currentUser} updateUser = {this.props.updateUser}/>
                 :
                 <div class = 'userButtons' >
-                    <p>{this.props.currentUser.username} <span class = 'heart'></span><span>'s  </span> {!this.state.isHidden && this.props.currentUser.location}</p>
+                    <p>{this.props.currentUser.user.username} <span class = 'heart'></span><span>'s  </span> {!this.state.isHidden && this.props.currentUser.user.location}</p>
                     <button onClick = {this.toggleHidden.bind(this)}>
                         Edit Homebase!
                     </button>
                     <button onClick = {this.props.deleteUser}>Delete Account</button>
                 </div>
                 }
-
+                <UserTrails currentUser = {this.props.currentUser} />
             </div>
         )
     }

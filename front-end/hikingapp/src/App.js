@@ -12,11 +12,11 @@ class App extends Component {
       currentUser: null
     }
   }
-  componentDidMount(){
-    this.checkForUser();
-  }
+  // componentDidMount(){
+  //   this.checkForUser();
+  // }
   checkForUser = async () => {
-    console.log('im here');
+    console.log('checkForUser called');
     const currentUser = await fetch('http://localhost:8080/users/current', {
       credentials: 'include'
     })
@@ -28,6 +28,7 @@ class App extends Component {
       })
     }
   }
+
   handleLogin = async (formData) => {
     console.log(formData);
     try{
@@ -41,10 +42,7 @@ class App extends Component {
       })
       const parsedLoginResponse = await loginResponse.json();
       if(loginResponse.status === 200){
-        this.setState({
-          loggedIn: true,
-          currentUser: parsedLoginResponse
-        })
+        this.checkForUser()
       } else {
         console.log('Check yoself')
       }
@@ -52,6 +50,7 @@ class App extends Component {
       console.log(err);
     }
   }
+  
   handleRegister = async (formData) => {
     console.log(formData);
     const response = await fetch('http://localhost:8080/users', {
