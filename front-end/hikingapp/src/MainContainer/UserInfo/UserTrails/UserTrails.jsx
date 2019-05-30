@@ -8,7 +8,7 @@ class UserTrails extends Component{
 	handleOnClick = async (id) => {
 		console.log(id);
 		try{
-		    const deletedTrail = await fetch('http://localhost:8080/trails/' + id , {
+		    const deletedTrail = await fetch(process.env.REACT_APP_BACKEND_URL + '/trails/' + id , {
 		        method: 'DELETE',
 		        credentials: 'include'
 		    }) 

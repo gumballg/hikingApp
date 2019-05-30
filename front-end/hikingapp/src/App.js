@@ -17,7 +17,7 @@ class App extends Component {
   // }
   checkForUser = async () => {
     console.log('checkForUser called');
-    const currentUser = await fetch('http://localhost:8080/users/current', {
+    const currentUser = await fetch(process.env.REACT_APP_BACKEND_URL + '/users/current', {
       credentials: 'include'
     })
     const parsedResponse = await currentUser.json();
@@ -32,7 +32,7 @@ class App extends Component {
   handleLogin = async (formData) => {
     console.log(formData);
     try{
-      const loginResponse = await fetch('http://localhost:8080/login', {
+      const loginResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/login', {
         method: 'POST',
         body: JSON.stringify(formData),
         credentials: 'include',
@@ -53,7 +53,7 @@ class App extends Component {
   
   handleRegister = async (formData) => {
     console.log(formData);
-    const response = await fetch('http://localhost:8080/users', {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/users', {
       method: 'POST',
       body: JSON.stringify(formData),
       credentials: 'include',
@@ -73,7 +73,7 @@ class App extends Component {
   }
   updateUser = async (id, user) => {
     console.log('UPDATE CLICKED')
-    const response = await fetch(`http://localhost:8080/users/${id}`, {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/users/' + id , {
         method: 'PUT',
         body: JSON.stringify(user),
         credentials: 'include',
@@ -99,7 +99,7 @@ class App extends Component {
   deleteUser = async(id) => {
     if(this.state.currentUser !== null){
       console.log(`DELETING USER ${this.state.currentUser.id}`)
-      const deletedUser = await fetch(`http://localhost:8080/users/${this.state.currentUser.id}`, {
+      const deletedUser = await fetch(process.env.REACT_APP_BACKEND_URL + '/users/' + this.state.currentUser.id , {
         method: 'DELETE'
       })
       if(deletedUser.status === 200){
