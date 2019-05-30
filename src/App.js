@@ -65,11 +65,8 @@ class App extends Component {
     console.log('parsedResponse');
     console.log(parsedResponse);
     if(response.status === 200){
-      this.setState({
-        loggedIn: true,
-        currentUser: parsedResponse
-      })
-    }
+      this.checkForUser()
+    } else console.error(err);
   }
   updateUser = async (id, user) => {
     console.log('UPDATE CLICKED')
