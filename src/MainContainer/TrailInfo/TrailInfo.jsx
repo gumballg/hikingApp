@@ -63,7 +63,7 @@ class TrailInfo extends Component {
     }
     addTrail = async (trail, e) => {
         try{
-            const addedTrail = await fetch('http://localhost:8080/trails', {
+            const addedTrail = await fetch(process.env.REACT_APP_BACKEND_URL + '/trails', {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify(trail),
